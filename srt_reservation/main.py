@@ -16,7 +16,7 @@ from srt_reservation.validation import station_list
 chromedriver_path = r'C:\workspace\chromedriver.exe'
 
 class SRT:
-    def __init__(self, dpt_stn, arr_stn, dpt_dt, dpt_tm, num_trains_to_check=2, want_reserve=False):
+    def __init__(self, dpt_stn, arr_stn, dpt_dt, dpt_tm, num_trains_to_check_s=1, num_trains_to_check=2, want_reserve=False):
         """
         :param dpt_stn: SRT 출발역
         :param arr_stn: SRT 도착역
@@ -33,7 +33,9 @@ class SRT:
         self.dpt_dt = dpt_dt
         self.dpt_tm = dpt_tm
 
+        self.num_trains_to_check_s = num_trains_to_check_s
         self.num_trains_to_check = num_trains_to_check
+        
         self.want_reserve = want_reserve
         self.driver = None
 
@@ -159,7 +161,7 @@ class SRT:
 
     def check_result(self):
         while True:
-            for i in range(1, self.num_trains_to_check+1):
+            for i in range(self.num_trains_to_check_s, self.num_trains_to_check+1):
                 try:
                     standard_seat = self.driver.find_element(By.CSS_SELECTOR, f"#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr:nth-child({i}) > td:nth-child(7)").text
                     reservation = self.driver.find_element(By.CSS_SELECTOR, f"#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr:nth-child({i}) > td:nth-child(8)").text
