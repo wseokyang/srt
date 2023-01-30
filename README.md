@@ -56,4 +56,4 @@ python quickstart.py --user 1234567890 --psw 000000 --dpt 동탄 --arr 동대구
 명절 승차권 예약에는 사용이 불가합니다.  
 
 
-python quickstart.py --user 1691114560 --psw rhdfyd12!@ --dpt 수서 --arr 천안아산 --dt 20230129 --tm 18 --nums 2 --num 3 
+python quickstart.py --user 1691114560 --psw rhdfyd12!@ --dpt 수서 --arr 천안아산 --dt 20230130 --tm 22 --nums 1 --num 1
