@@ -57,8 +57,3 @@ python quickstart.py --user 1234567890 --psw 000000 --dpt 동탄 --arr 동대구
 
 conda activate srt
 cd C:\Users\wooseok\Google_Drive_통합\Drive2\Git\srt
-
-python quickstart.py --user 1691114560 --psw rhdfyd12!@ --dpt 수서 --arr 천안아산 --dt 20230202 --tm 22 --nums 1 --num 1
-
-python quickstart.py --user 1691114560 --psw rhdfyd12!@ --dpt 천안아산 --arr 수서 --dt 20230130 --tm 22 --nums 1 --num 1
-
