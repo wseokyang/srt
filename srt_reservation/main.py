@@ -10,10 +10,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, WebDriverException
 import telegram
+import asyncio
 from srt_reservation.exceptions import InvalidStationNameError, InvalidDateError, InvalidDateFormatError, InvalidTimeFormatError
 from srt_reservation.validation import station_list
 
 chromedriver_path = r'C:\workspace\chromedriver.exe'
+bot = telegram.Bot(token='token')
+chat_id = chat_id
 
 class SRT:
     def __init__(self, dpt_stn, arr_stn, dpt_dt, dpt_tm, num_trains_to_check_s=1, num_trains_to_check=2, want_reserve=False):
@@ -137,9 +140,7 @@ class SRT:
             if self.driver.find_elements(By.ID, 'isFalseGotoMain'):
                 self.is_booked = True
                 print("예약 성공")
-                bot = telegram.Bot(token='6012854751:AAH7IDnhbnVzKBQ5T-h5ED9-VnX15zmH7uw')
-                chat_id = 5944100637
-                bot.sendMessage(chat_id=chat_id, text="예약 성공")
+                asyncio.run(bot.sendMessage(chat_id=chat_id, text="예약 성공"))
                 return self.driver
             else:
                 print("잔여석 없음. 다시 검색")
