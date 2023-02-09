@@ -7,8 +7,8 @@
 
 ## 다운
 ```cmd
-git clone https://github.com/kminito/srt_reservation.git
-```
+git clone https://github.com/wseokyang/srt
+'''
   
 ## 필요
 - 파이썬 3.7, 3.9에서 테스트 했습니다.
@@ -23,7 +23,8 @@ pip install -r requirements.txt
     arr: SRT 도착역
     dt: 출발 날짜 YYYYMMDD 형태 ex) 20220115
     tm: 출발 시간 hh 형태, 반드시 짝수 ex) 06, 08, 14, ...
-    num: 검색 결과 중 예약 가능 여부 확인할 기차의 수 (default : 2)
+    nums: 검색 결과 중 예약 가능 여부 확인할 기차의 시작 위치 (default : 1)
+    num: 검색 결과 중 예약 가능 여부 확인할 기차의 끝 위치 (default : 2)
     reserve: 예약 대기가 가능할 경우 선택 여부 (default : False)
 
     station_list = ["수서", "동탄", "평택지제", "천안아산", "오송", "대전", "김천(구미)", "동대구",
@@ -39,21 +40,6 @@ pip install -r requirements.txt
 검색 결과 중 상위 2개가 예약 가능할 경우 예약
 
 ```cmd
-python quickstart.py --user 1234567890 --psw 000000 --dpt 동탄 --arr 동대구 --dt 20220117 --tm 08
+python quickstart.py --user 1234567890 --psw 000000 --dpt 동탄 --arr 동대구 --dt 20220117 --tm 22 --nums 3 --num 5
 ```
 
-**Optional**  
-예약대기 사용 및 검색 결과 상위 3개의 예약 가능 여부 확인
-```cmd
-python quickstart.py --user 1234567890 --psw 000000 --dpt 동탄 --arr 동대구 --dt 20220117 --tm 08 --num 3 --reserve True
-```
-
-**실행 결과**
-
-![](./img/img1.png)
-
-## 기타  
-명절 승차권 예약에는 사용이 불가합니다.  
-
-conda activate srt
-cd C:\Users\wooseok\Google_Drive_통합\Drive2\Git\srt
