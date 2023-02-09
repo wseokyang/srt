@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, WebDriverException
-
+import telegram
 from srt_reservation.exceptions import InvalidStationNameError, InvalidDateError, InvalidDateFormatError, InvalidTimeFormatError
 from srt_reservation.validation import station_list
 
@@ -137,11 +137,15 @@ class SRT:
             if self.driver.find_elements(By.ID, 'isFalseGotoMain'):
                 self.is_booked = True
                 print("예약 성공")
+                bot = telegram.Bot(token='6012854751:AAH7IDnhbnVzKBQ5T-h5ED9-VnX15zmH7uw')
+                chat_id = 5944100637
+                bot.sendMessage(chat_id=chat_id, text="예약 성공")
                 return self.driver
             else:
                 print("잔여석 없음. 다시 검색")
                 self.driver.back()  # 뒤로가기
                 self.driver.implicitly_wait(5)
+
 
     def refresh_result(self):
         submit = self.driver.find_element(By.XPATH, "//input[@value='조회하기']")
